@@ -31,7 +31,6 @@ function groups() {
     var g = []
     METADATA.groups.forEach(function(group) {
         if (INCLUDED.includes(group.type)) {
-            console.log(group);
             add_properties_to_group(group)
             g.push(group)
         }
