@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./properties.js"></script>
+    <script src="./spring-configuration-metadata.js"></script>
+    <script>
+      function list_groups(groups) {
+        var list = $('<ul></ul>');
+        $('#groups').append(list)
+        $.each(groups, function(i) {
+            list.append('<li><em>' + groups[i].name + '</em> [' + groups[i].properties.map( p => p.name.substring(p.name.lastIndexOf(".") + 1)) + '] </li>');
+        });
+    }
+
+    $(document).ready(function () {
+          properties_init(SPRING_CONFIGURATION_METADATA);
+          list_groups(groups());
+        });
+    </script>
+  </head>
+  <body>
+    <h2>Properties</h2>
+
+    <div id="groups"></div>
+  </body>
+</html>
