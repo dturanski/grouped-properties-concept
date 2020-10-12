@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.js"></script>
     <script src="./properties.js"></script>
     <script src="./spring-configuration-metadata.js"></script>
+   
     <script>
       function list_groups(groups) {
-        var list = $('<ul></ul>');
-        $('#groups').append(list)
+       
         $.each(groups, function(i) {
-            list.append('<li><em>' + groups[i].name + '</em> [' + groups[i].properties.map( p => p.name.substring(p.name.lastIndexOf(".") + 1)) + '] </li>');
+           $("#groups").append('<h3>' + groups[i].name + '</h3>' );
+           $("#groups").append('<div> [' + groups[i].properties.map( p => p.name.substring(p.name.lastIndexOf(".") + 1)) + '] </div>');
         });
+
     }
 
     $(document).ready(function () {
+         
           properties_init(SPRING_CONFIGURATION_METADATA);
           list_groups(groups());
+          $("#groups").accordion();
         });
     </script>
   </head>
   <body>
     <h2>Properties</h2>
-
     <div id="groups"></div>
   </body>
 </html>
